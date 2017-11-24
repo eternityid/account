@@ -1,0 +1,45 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register as a New User";
+}
+
+<form method="post" asp-controller="Account" asp-action="Register" asp-route-returnurl="@Model.ReturnUrl" novalidate="novalidate">
+    <h1>@ViewData["Title"]</h1>
+    <div class="form-group">
+        <input class="form-control" asp-for="Email" placeholder="@Html.DisplayNameFor(x => x.Email)" />
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <input class="form-control" asp-for="Password" placeholder="@Html.DisplayNameFor(x => x.Password)" />
+            <div class="input-group-addon" data-toggle="popover" title="Password requirements" style="cursor: pointer"><i class="fa fa-info-circle" style="font-size: 20px"></i></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input class="form-control" asp-for="ConfirmPassword" placeholder="@Html.DisplayNameFor(x => x.ConfirmPassword)" />
+    </div>
+    <div asp-validation-summary="All" class="form-group text-danger"></div>
+    <div class="form-group">
+        <button type="submit" id="signup" class="btn btn-primary">Sign Up</button>
+    </div>
+    <p>Already have an account? <a asp-action="Login" asp-route-returnurl="@Model.ReturnUrl">Sign In</a></p>
+</form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script>
+        $(function() {
+            $('[data-toggle=popover]').popover({
+                trigger: "click",
+                container: "body",
+                html: "true",
+                content: "<p>Passwords must: </p>" +
+                    "<ul><li>Be at least <b>6</b> and at max <b>100</b> characters long</li>" +
+                    "<li>Have at least one <b>non-alphanumeric</b> character</li>" +
+                    "<li>Have at least one <b>lowercase (a-z)</b> character</li>" +
+                    "<li>Have at least one <b>uppercase (A-Z)</b> character</li>" +
+                    "<li>Have at least one <b>digit (0-9)</b></li></ul>"
+            });
+        });
+    </script>
+}

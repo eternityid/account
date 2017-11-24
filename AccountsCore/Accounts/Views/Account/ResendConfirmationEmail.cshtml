@@ -1,0 +1,13 @@
+﻿@model RegisterConfirmationViewModel
+@{
+    ViewData["Title"] = "Confirmation email resent";
+}
+<div class="row">
+    <form>
+        <h1>A new confirmation email is sent to your email!</h1>
+        <div class="form-group">
+            <p>Please check your email to confirm your account.</p>
+        </div>
+        <p><a href="@Model.ReturnUrl"><i class="glyphicon glyphicon-arrow-left"></i> Back to Login</a></p>
+    </form>
+</div>

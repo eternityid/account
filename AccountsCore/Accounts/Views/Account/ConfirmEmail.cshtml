@@ -1,0 +1,13 @@
+﻿@model ConfirmEmailViewModel
+@{
+    ViewData["Title"] = "Email Confirmation";
+}
+<div class="row">
+    <form>
+        <h1>Thanks for confirming!</h1>
+        <div class="form-group">
+    	    <p>You're now ready to use our services. Please log in with the link below.</p>
+        </div>
+        <p><a href="@Model.ReturnUrl"><i class="glyphicon glyphicon-arrow-left"></i> Back to Login</a></p>
+    </form>
+</div>

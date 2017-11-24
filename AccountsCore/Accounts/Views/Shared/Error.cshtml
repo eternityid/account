@@ -1,0 +1,25 @@
+﻿﻿@model ErrorViewModel
+
+@{
+    ViewData["Title"] = "Error";
+    var errorTitle = "An error has occurred";
+    var errorContent = "An error occurred while processing your request. If this persists, please contact support.";
+
+    if (Model != null)
+    {
+        errorTitle = !string.IsNullOrEmpty(Model.ErrorTitle) ? Model.ErrorTitle : errorTitle;
+        errorContent = !string.IsNullOrEmpty(Model.Error.Error) ? Model.Error.Error : errorContent;
+    }
+}
+
+<form action="@Model?.ActionUrl" method="POST">
+    <h1>@errorTitle</h1>
+    <p>
+        @errorContent
+    </p>
+    <br/>
+    @if (!string.IsNullOrEmpty(Model?.ActionUrl) && !string.IsNullOrEmpty(Model.ActionLabel))
+    {
+        <p><button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-envelope"></i> @Model.ActionLabel</button></p>
+    }
+</form>

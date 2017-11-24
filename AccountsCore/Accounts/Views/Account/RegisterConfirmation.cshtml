@@ -1,0 +1,13 @@
+﻿@model RegisterConfirmationViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="row">
+    <form>
+        <h1>Thanks for signing up!</h1>
+        <div class="form-group">
+            <p>Please check your email to confirm your account.</p>
+        </div>
+        <p><a asp-action="Login" asp-route-returnurl="@Model.ReturnUrl"><i class="glyphicon glyphicon-arrow-left"></i> Back to Login</a></p>
+    </form>
+</div>
